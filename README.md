@@ -1,21 +1,45 @@
 # MasterMind-SBA
 
-MasterMind 猜数字游戏 — C++ 控制台版。
+A C++ console Mastermind (Bulls and Cows) game.
 
-## 玩法
+## Gameplay
 
-系统生成一组不重复的 4 位数字（0-9），玩家每次猜 4 位数字，系统给出提示：
+A secret code is generated (or set by Player 1 in PvP mode). The guesser has a limited number of rounds to deduce the correct digits and positions.
 
-- **A**：数字和位置都正确
-- **B**：数字正确但位置不对
+Each guess is scored with two metrics:
 
-例如：答案是 `1234`，猜 `1324` → 提示 `2A2B`。
+- **Position Correct** — correct digit in the correct position
+- **Code Correct** — correct digit but wrong position
 
-## 编译运行
+Guess all positions correctly to win.
+
+## Features
+
+| Feature | Description |
+|---|---|
+| **Standard Mode** | System generates a random code |
+| **PvP Mode** | Player 1 sets the code, Player 2 guesses |
+| **Difficulty Settings** | Code length 1–9, digit range 1–9, round limit adjustable, repeat toggle |
+| **Save System** | 3 slots, binary serialization, save/load in-game |
+| **Pause Menu** | Esc → Resume / Save / Exit |
+| **Konami Code** | ↑↑↓↓←→←→BA — reveals the code during gameplay |
+
+## Build
+
+Windows — MinGW or Visual Studio.
 
 ```bash
-g++ main.cpp -o mastermind
-./mastermind
+g++ main.cpp -o mastermind.exe
+mastermind.exe
 ```
 
-Windows 下用 MinGW 或 Visual Studio 编译均可。
+## Controls
+
+| Key | Action |
+|---|---|
+| `↑` / `↓` | Navigate menus |
+| `←` / `→` | Adjust values / switch save slot mode |
+| `Enter` | Confirm / submit guess |
+| `Backspace` | Delete last digit |
+| `Esc` | Back / pause menu |
+| `1`–`9` | Input digits |
